@@ -72,12 +72,12 @@ head(df)
 
 df %>%
   ggplot(aes(x=fct_rev(label),y=estimate,ymin=conf.low,ymax=conf.high)) +
-  geom_pointrange(color = "black", size = .5) +
+  geom_pointrange(color = "black", size = .5) + 
   geom_hline(yintercept = 0, color = "steelblue") +  
-  coord_flip() +
-  xlab(" ") +
+  coord_flip() + 
+  xlab(" ") + 
   ylab("Coefficient (95% Confidence Interval)") +
-  labs(title ="Linear Regression Models Estimating the Effects of Car Weight \n on Gas Mileage") +
+  labs(title ="Linear Regression Models Estimating the Effects of Vehicle Weight \n on Fuel Efficiency") +
   theme(
     plot.title = element_text(size = 14, face = "bold"),
     axis.text.x = element_text(size = 12),
@@ -86,17 +86,17 @@ df %>%
 
 ##### Step 4 Option 2: Create forest plot using forestplot package #############
 
-forestplot(labeltext = df$label,
-           mean = df$estimate,
-           lower = df$conf.low,
+forestplot(labeltext = df$label, 
+           mean = df$estimate, 
+           lower = df$conf.low, 
            upper = df$conf.high,
            xlab = "Adjusted Coefficients and 95% Confidence Intervals",
-           boxsize = 0.1,
-           col = fpColors(box = "black", line = "black", summary = "black",
-                          zero = "steelblue"),
-           txt_gp = fpTxtGp(label  = gpar (cex = 1.0),
+           boxsize = 0.1, 
+           col = fpColors(box = "black", line = "black", summary = "black", 
+                          zero = "steelblue"), 
+           txt_gp = fpTxtGp(label  = gpar (cex = 1.0), 
                             xlab = gpar(cex = 1.0),
-                            ticks = gpar (cex = 1.0),
-                            title = gpar (cex = 1.0)),
+                            ticks = gpar (cex = 1.0), 
+                            title = gpar (cex = 1.0)), 
            grid = TRUE,
-           title = "Linear Regression Models Estimating the Effects of Car Weight on Gas Mileage")
+           title = "Linear Regression Models Estimating the Effects of Vehicle Weight on \n Fuel Efficiency")
